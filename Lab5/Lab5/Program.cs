@@ -1,25 +1,37 @@
-﻿using System;
-
-namespace Lab5
+﻿
+using System;
+using System.IO;
+public class ExceptionLearning
 {
-    class Program
+    public static void Main()
     {
-        static void Main(string[] args)
+        int a = 10;
+        int b = 20;
+        int c;
+        try
         {
-            Console.WriteLine("Line 1");
-            Console.WriteLine("Line 2");
-            Console.WriteLine("Line 3");
-        line4:
-            Console.WriteLine("Line 4");
-            Console.WriteLine("Line 5");
-            Console.WriteLine("Line 6");
-            goto line10;
-            Console.WriteLine("Line 7");
-            Console.WriteLine("Line 8");
-            Console.WriteLine("Line 9");
-        line10:
-            Console.WriteLine("Line 10");
+            c = div(a, b);
+        }
+        catch (DivideByZeroException e)
+        {
+
+            Console.WriteLine("DivideByZeroException");
+            Console.WriteLine(e.Message);
+        }
+        catch (NullReferenceException e)
+        {
+            Console.WriteLine("NullReferenceException");
+            Console.WriteLine(e.Message);
 
         }
+        catch (Exception e)
+        {
+            Console.WriteLine("Exception");
+            Console.WriteLine(e.Message);
+        }
+    }
+    private static int div(int a, int b)
+    {
+        throw new DivideByZeroException();
     }
 }
